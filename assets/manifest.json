@@ -7,6 +7,7 @@
       "main": true
     },
     "main.css": {
+      "bower": ["pure"],
       "files": [
         "styles/main.scss"
       ],
@@ -22,6 +23,6 @@
     }
   },
   "config": {
-    "devUrl": "http://example.dev"
+    "devUrl": "http://gameguru/"
   }
 }
