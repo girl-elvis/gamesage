@@ -8,8 +8,8 @@
   "private": true,
   "dependencies": {
     "modernizr": "2.8.2",
-    "pure": "~0.6.0",
-    "font-awesome": "~4.3.0"
+    "font-awesome": "~4.3.0",
+    "pure": "~0.6.0"
   },
   "overrides": {
     "modernizr": {
