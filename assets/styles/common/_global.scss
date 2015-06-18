@@ -1,1 +1,81 @@
 /* global styles here*/
+
+@import url(http://fonts.googleapis.com/css?family=Bentham);
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400);
+
+body, p, h1, h2, h3, h4, h5, h6 {font-family: Bentham, serif;	}
+
+#site-description, h1.entry-title, #archive-header, .page-title 
+{font-family: "Josefin Sans", sans-serif; font-weight: 400;	}
+
+#site-sub-navigation {font-family: Bentham, serif;	}
+
+
+
+body {
+	background-color: $background;
+	background-image: url("../images/bgtile.png");
+}
+
+
+/* NAV (override bootstrap)*/
+
+$bgDefault      : $brand-primary;
+$bgactive		: darken($brand-primary, 10%);
+$bgHighlight    : lighten($brand-primary, 10%);
+$colDefault     : #ffbbbc; //default text colour
+$colHighlight       : #fff; //highlight text colour
+
+
+
+
+.navbar-default {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus { 
+      color: $colHighlight; }}
+  .navbar-text {
+    color: $colDefault; }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight;
+           background-color: $bgactive;}}}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgactive; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight; }
+    .icon-bar {
+      background-color: $colDefault; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault; }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight; }}}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight; }}
+    > .active {
+      > a, > a:hover, > a:focus, {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+}
+
