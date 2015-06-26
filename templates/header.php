@@ -8,7 +8,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+      <a class="navbar-brand" href="<?= esc_url(home_url('/')); ?>"><img src="
+<?php echo get_template_directory_uri() . "/dist/images/logo.png" ; ?>" >
+
+</a>
+     <!--    <a class="navbar-brand sr-only" href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a> -->
+      <span class="tagline h5"><?php bloginfo('description'); ?></span>
     </div>
 
     <nav class="collapse navbar-collapse" role="navigation">

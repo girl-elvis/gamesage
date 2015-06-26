@@ -3,9 +3,9 @@
 @import url(http://fonts.googleapis.com/css?family=Bentham);
 @import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400);
 
-body, p, h1, h2, h3, h4, h5, h6 {font-family: Bentham, serif;	}
+body, p { font-family: Bentham, serif; font-size: 16px;	}
 
-#site-description, h1.entry-title, #archive-header, .page-title 
+h1, h2, h3, h4, h5, h6 , #archive-header, .page-title 
 {font-family: "Josefin Sans", sans-serif; font-weight: 400;	}
 
 #site-sub-navigation {font-family: Bentham, serif;	}
@@ -18,64 +18,83 @@ body {
 }
 
 
-/* NAV (override bootstrap)*/
-
-$bgDefault      : $brand-primary;
-$bgactive		: darken($brand-primary, 10%);
-$bgHighlight    : lighten($brand-primary, 10%);
-$colDefault     : #ffbbbc; //default text colour
-$colHighlight       : #fff; //highlight text colour
 
 
 
 
-.navbar-default {
-  background-color: $bgDefault;
-  border-color: $bgHighlight;
-  .navbar-brand {
-    color: $colDefault;
-    &:hover, &:focus { 
-      color: $colHighlight; }}
-  .navbar-text {
-    color: $colDefault; }
-  .navbar-nav {
-    > li {
-      > a {
-        color: $colDefault;
-        &:hover,  &:focus {
-          color: $colHighlight;
-           background-color: $bgactive;}}}
-    > .active {
-      > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgactive; }}
-    > .open {
-      > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}}
-  .navbar-toggle {
-    border-color: $bgHighlight;
-    &:hover, &:focus {
-      background-color: $bgHighlight; }
-    .icon-bar {
-      background-color: $colDefault; }}
-  .navbar-collapse,
-  .navbar-form {
-    border-color: $colDefault; }
-  .navbar-link {
-    color: $colDefault;
-    &:hover {
-      color: $colHighlight; }}}
 
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu {
-    > li > a {
-      color: $colDefault;
-      &:hover, &:focus {
-        color: $colHighlight; }}
-    > .active {
-      > a, > a:hover, > a:focus, {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}}
+/* MIXINS  */
+
+@mixin doubleborder() { // rewrite for reusability $colour, $bgcolour, $firstwidth, $secondwidth
+ border: 1px solid $background;
+  padding: 0px 15px 15px 15px;
+  margin-bottom: 30px;
+  box-shadow:
+   0 0 1px 1px $brand-primary,
+    0 0 0 6px $background,
+    0 0 1px 7px $brand-primary;
+
 }
 
+/* Override Plugin CSS*/
+
+// UPW
+.upw-posts article { 
+border-bottom: none;
+margin-bottom: 0;
+padding-bottom: 0;
+
+} 
+.searchandfilter ul li li {
+    display: inline;
+}
+.searchandfilter label {
+    display: inline;
+    }
+
+
+    // CAROUSEL
+
+.carousel-inner > .item {background: $brand-primary;}
+
+#carousel-example-generic {
+    margin: 20px auto;
+    width: 400px;
+}
+
+#carousel-custom {
+    
+    width: 50%;
+}
+#carousel-custom .carousel-indicators {
+    margin: 10px 0 0;
+    overflow: auto;
+    position: static;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+}
+#carousel-custom .carousel-indicators li {
+    background-color: $background;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    display: inline-block;
+    height: auto;
+    margin: 0 !important;
+    width: auto;
+}
+#carousel-custom .carousel-indicators li img {
+    display: block;
+    opacity: 0.5;
+}
+#carousel-custom .carousel-indicators li.active img {
+    opacity: 1;
+}
+#carousel-custom .carousel-indicators li:hover img {
+    opacity: 0.75;
+}
+#carousel-custom .carousel-outer {
+    position: relative;
+    height: 300px;
+}
+.carousel-inner > .item > a > img, .carousel-inner > .item > img {margin: 0 auto;}
