@@ -4,3 +4,5 @@ dist
 bower_components
 node_modules
 npm-debug.log
+gamesage.sublime-project
+gamesage.sublime-workspace
