@@ -11,11 +11,7 @@
       <a class="navbar-brand" href="<?= esc_url(home_url('/')); ?>"><img src="
 <?php echo get_template_directory_uri() . "/dist/images/logo.png" ; ?>" >
 </a>
-      <!-- <a class="navbar-brand" href="<?= esc_url(home_url('/')); ?>"><img src="
-<?php echo get_template_directory_uri() . "/dist/images/logo-mb.png" ; ?>" >
-</a> -->
-     <!--    <a class="navbar-brand sr-only" href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a> -->
-      <span class="tagline h4 hidden-xs"><?php bloginfo('description'); ?></span>
+       <span class="tagline h4 hidden-xs"><?php bloginfo('description'); ?></span>
     </div>
 
     <nav class="collapse navbar-collapse" role="navigation">

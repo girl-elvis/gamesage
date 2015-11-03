@@ -51,6 +51,16 @@ body {
 .search-form .form-inline .input-group {
   width: 100%;
 }
+.homesearch{
+  @include doubleborder();
+  padding: 1em;
+  h3 {
+    background: url('../images/asktheguru.png') no-repeat ;
+    margin: 0;
+    height: 85px;
+  }
+}
+
 
 /* Override Plugin CSS*/
 

@@ -1,9 +1,10 @@
-<form  method="post" action="<?php bloginfo('url');?>/game-results/">
-<?php  $taxonomies = get_object_taxonomies('game');
-    foreach($taxonomies as $tax){
-        echo buildSelect($tax);
-    }
-?>
-<input type="submit"/>
+<form role="search" method="get" class="search-form form-inline" action="<?= esc_url(home_url('/')); ?>">
+	<span class="gamehelp">If you're looking for info on a particular game, stick it in here:</span>
+  <label class="sr-only"><?php _e('Search for:', 'sage'); ?></label>
+  <div class="input-group">
+    <input type="search" value="<?= get_search_query(); ?>" name="s" class="search-field form-control" placeholder="<?php _e('Search', 'sage'); ?> <?php bloginfo('name'); ?>" required>
+    <span class="input-group-btn">
+      <button type="submit" class="search-submit btn btn-default"><?php _e('Search', 'sage'); ?></button>
+    </span>
+  </div>
 </form>
-
