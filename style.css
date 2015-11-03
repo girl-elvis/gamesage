@@ -9,3 +9,12 @@ Author URI:         http://www.safetycat.co.uk;
 License:            MIT License
 License URI:        http://opensource.org/licenses/MIT
 */
+
+
+table.widefat td.column-thumbnail{width: 120px;}
+/*.gameloop {display:flex; flex-wrap:flex;}
+.gameloop article{height:100%;}*/
+
+.theloop{background: red;}
+.theloop {display:flex; flex-wrap:flex;}
+.theloop .card {height:100%;}
