@@ -162,4 +162,27 @@ function emf_add_custom_types( $query ) {
 add_filter( 'pre_get_posts', 'emf_add_custom_types' );
 
 
+// Custom Search
+
+
+function buildSelect($tax){
+
+  $terms = get_terms($tax);
+  $taxonomy = get_taxonomy( $tax );
+  $labels =get_taxonomy_labels( $taxonomy );
+  $taxname = ($labels->singular_name) ;
+
+  $x = '<select name="'. $tax .'">';
+  $x .= '<option value="">'. ucfirst($taxname) .'</option>';
+  foreach ($terms as $term) {
+     $x .= '<option value="' . $term->slug . '">' . $term->name . '</option>';
+  }
+  $x .= '</select>';
+
+  $notshow = array ("publisher", "designer", "post_tag", "learning_time", "first-play");
+  if ( !in_array ($tax, $notshow )) 
+  return $x;
+}
+
+
 ?>
