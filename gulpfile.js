@@ -101,12 +101,13 @@ var cssTasks = function(filename) {
         'android 2.3',
         'android 4',
         'opera 12'
-      ]
+      ],
+              minifier: argv.production,
     })
-    .pipe(minifyCss, {
-      advanced: false,
-      rebase: false
-    })
+    // .pipe(minifyCss, {
+    //   advanced: false,
+    //   rebase: false
+    // })
     .pipe(function() {
       return gulpif(enabled.rev, rev());
     })

@@ -37,10 +37,10 @@ foreach ($sliderimages as $index => $slide) {
             
         <!-- Controls -->
         <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
-            <span class='glyphicon glyphicon-chevron-left'></span>
+            <span class='glyphicon glyphicon-arrow-left'></span>
         </a>
         <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
-            <span class='glyphicon glyphicon-chevron-right'></span>
+            <span class='glyphicon glyphicon-arrow-right'></span>
         </a>
     </div>
     

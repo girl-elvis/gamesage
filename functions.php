@@ -18,7 +18,7 @@ $sage_includes = [
   'lib/assets.php',                // Scripts and stylesheets
   'lib/titles.php',                // Page titles
   'lib/extras.php',                // Custom functions
-   'lib/wp_bootstrap_navwalker.php', // bootstrap nav walker
+  'lib/wp_bootstrap_navwalker.php', // bootstrap nav walker
 ];
 
 foreach ($sage_includes as $file) {
@@ -30,6 +30,8 @@ foreach ($sage_includes as $file) {
 }
 unset($file, $filepath);
 
+// Setup custom Image sizes
+
 add_action( 'after_setup_theme', 'cat_theme_setup' );
 function cat_theme_setup() {
   add_image_size( 'slidethumb', 100, 100, 1 ); //  (cropped)
@@ -39,53 +41,113 @@ function cat_theme_setup() {
 
 
 
- 
-    
-// Add Extra feilds to CPT
-function add_after_post_content($content) {
-  if(is_single() && ( 'game' == get_post_type() )) {
-    //$take-that = types_render_field("take-that", array("output"=>"html"));
-    //echo $take-that;
-    $content .= '<h3 class="icon">Take That</h2>';
-    $content .= types_render_field("take-that");
-    $content .= '<h3 class="icon">Fidget Factor</h2>';
-    $content .= types_render_field("fidget-factor");
-    $content .= '<h3 class="icon">Brain Burn</h2>';
-    $content .= types_render_field("brain-burn");
-    $content .= '<h3 class="icon">Again again</h2>';
-    $content .= types_render_field("again-again");
-    
-    
-$content .= ' <p> <div>';
-$content .= get_the_term_list( get_the_ID(), 'age', 'Age: ');
-$content .= '+';      
-      
-$content .= '</div> <div>';
-$content .= get_the_term_list( get_the_ID(), 'num_players', 'Number of Players: ', ', ');
-      
-$content .= '<div>';
-$content .= get_the_term_list( get_the_ID(), 'complexity','Complexity: ' );
+ // Mark parent navigation active when on custom post type single page
 
-$content .= '</div> <div>';
-$content .= get_the_term_list( get_the_ID(), 'learning_time', 'Learning Time: ');
 
-$content .= '</div> <div>';
-$content .= get_the_term_list( get_the_ID(), 'first-play', 'First Play Time: ');
+  add_filter( 'nav_menu_css_class', 'nav_parent_class', 10, 2 );
 
-$content .= '</div> <div>';
-$content .= get_the_term_list( get_the_ID(), 'regular_play_times', 'Regular Play Time: ');
+function nav_parent_class( $classes, $item ) {
+    $cpt_name = 'games';
+    $parent_slug = 'games';
 
-$content .= '</div> <div>';
-$content .= get_the_term_list( get_the_ID(), 'publisher', 'publisher: ');
+    if ( $cpt_name == get_post_type() && ! is_admin() ) {
+        global $wpdb;
 
-$content .= '</div> <div>';
-$content .= get_the_term_list( get_the_ID(), 'designer', 'Designer(s): ', ', ');
+        // remove any active classes from nav (blog is usually gets the currept_page_parent class on cpt single pages/posts)
+        $classes = array_filter($classes, ($class == 'current_page_item' || $class == 'current_page_parent' || $class == 'current_page_ancestor'  || $class == 'current-menu-item' ? false : true ));
 
-  }
-  return $content;
+        // get page info
+        // - we really just want the post_name so it cane be compared to the post type slug
+        $page = get_page_by_title( $item->title, OBJECT, 'page' );
+
+        // check if slug matches post_name
+        if( $page->post_name == $parent_slug ) {
+            $classes[] = 'current_page_parent';
+        }
+
+    }
+
+    return $classes;
 }
-add_filter('the_content', 'add_after_post_content');
+ 
+// Setup Admin Thumbnail Size  
+if ( function_exists( 'add_theme_support' ) ) {  
+  add_image_size( 'admin-thumb', 100, 999999 ); // 100 pixels wide (and unlimited height)  
+    }  
+  
+// Thumbnails to Admin Post View  
+add_filter('manage_posts_columns', 'thumbnail_column', 5);  
+add_action('manage_posts_custom_column', 'posts_custom_columns', 5, 2);  
+  
+function thumbnail_column($columns){  
+  $new = array();
+  foreach($columns as $key => $title) {
+    if ($key=='title') // Put the Thumbnail column before the Author column
+      $new['thumbnail'] = 'Featured Img';
+    $new[$key] = $title;
+  }
+  return $new;
+}  
+  
+function posts_custom_columns($column_name, $id){  
+    if($column_name === 'thumbnail'){  
+        echo the_post_thumbnail( 'admin-thumb' ); 
+    }  
+} 
 
+// Add css for thumb column
+add_action('admin_head', 'thumb_column_width');
+
+function thumb_column_width() {
+    echo '<style type="text/css">';
+    echo '.column-thumbnail { width:120px; }';
+    echo '</style>';
+}
+
+
+
+
+
+// Add filter for thumb column
+
+add_action( 'restrict_manage_posts' , 'add_game_filters'  );
+
+function add_game_filters()
+{
+    // Only apply the filter to our specific post type
+    global $typenow;
+    if( $typenow == 'game' )
+    {
+        $current = isset($_GET['FILTER_IMG'])? $_GET['FILTER_IMG']:'';
+       
+        $eselect = ($current == "EXISTS") ?  "SELECTED" : "" ;
+        $nselect = ($current == "NOT EXISTS") ? "SELECTED" : "" ;
+
+
+        echo "<select name='FILTER_IMG'>";
+        echo '<option value="" >Featured Image</option>';
+       
+            echo '<option value="EXISTS" '.  $eselect.'>Has Featured Image</option>';
+            echo '<option value="NOT EXISTS" ' .  $nselect. '>No Featured Image</option>';
+       
+        echo "</select>";
+    }
+}
+
+add_filter( 'parse_query', 'modify_filter_games' );
+function modify_filter_games( $query )
+{
+    global $typenow;
+    global $pagenow;
+
+    if( $pagenow == 'edit.php' && $typenow == 'game' && isset($_GET['FILTER_IMG']) && $_GET['FILTER_IMG'] != ""  )
+    {
+        $query->query_vars[ 'meta_key' ] = '_thumbnail_id';
+        $query->query_vars[ 'meta_compare' ] = $_GET['FILTER_IMG'];
+        $query->query_vars[ 'meta_value' ] = "" ;
+
+    }
+}
 
 
 // Add Game posts to archive pages

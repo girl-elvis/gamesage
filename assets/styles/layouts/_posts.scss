@@ -1,0 +1,23 @@
+// Game Posts
+.type-game header {margin-bottom: 0.6em;}
+.type-game .entry-summary {text-align: center;}
+.type-game .entry-summary p  {text-align: left;}
+.game-meta {display: block; padding-right: 1em; white-space: nowrap;
+border-top: 1px solid #DD6453;
+padding-top: 5px;text-align: left;}
+
+.gameextra {@include doubleborder();}
+
+
+h1.entry-title{margin-top: 0}
+
+
+
+// Posts on archive pages
+.loop{
+	display: flex;
+	flex-wrap: wrap;
+}
+.card {
+    @include doubleborder();
+}

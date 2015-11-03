@@ -14,7 +14,7 @@
 .navbar-brand {
 height: auto;
 }
-.tagline {display:block; clear:both}
+.tagline {display:block; clear:both; text-transform: capitalize;}
 .navbar-nav {
     clear: left;
     float: none;
@@ -31,13 +31,15 @@ height: auto;
 $bgDefault      : $brand-primary;
 $bgactive		: darken($brand-primary, 10%);
 $bgHighlight    : lighten($brand-primary, 10%);
-$colDefault     : #ffbbbc; //default text colour
-$colHighlight       : #fff; //highlight text colour
+$colDefault     : #fff; //default text colour
+$colHighlight       : $hilight ; //highlight text colour
 
 .navbar-default {
  
   .navbar-brand {
     color: $colDefault;
+     width: 80%;
+     padding-top: 9px;
     &:hover, &:focus { 
       color: $colHighlight; }}
   .navbar-text {
@@ -86,3 +88,11 @@ $colHighlight       : #fff; //highlight text colour
 }
 
 /*Nav Layout*/
+
+
+
+ // Breadcrumbs
+
+ .breadcrumb_last{
+  display: none;
+ }
