@@ -69,6 +69,8 @@ function nav_parent_class( $classes, $item ) {
 
     return $classes;
 }
+
+
  
 // Setup Admin Thumbnail Size  
 if ( function_exists( 'add_theme_support' ) ) {  
@@ -103,10 +105,6 @@ function thumb_column_width() {
     echo '.column-thumbnail { width:120px; }';
     echo '</style>';
 }
-
-
-
-
 
 // Add filter for thumb column
 
@@ -149,6 +147,8 @@ function modify_filter_games( $query )
     }
 }
 
+// END ADMIN THUMB
+
 
 // Add Game posts to archive pages
 function emf_add_custom_types( $query ) {
@@ -162,8 +162,7 @@ function emf_add_custom_types( $query ) {
 add_filter( 'pre_get_posts', 'emf_add_custom_types' );
 
 
-// Custom Search
-
+// Custom Search / filter
 
 function buildSelect($tax){
 
