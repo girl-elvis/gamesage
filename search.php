@@ -1,5 +1,12 @@
 <?php get_template_part('templates/page', 'header'); ?>
 
+<div class="homesearch"><div class="text-hide"><h3 class="searchagain">Search Again</h3></div>
+		<?php 
+		get_template_part('templates/searchform', 'game'); 
+		get_template_part('templates/searchform', 'filter'); 
+		?>
+	</div>
+
 <?php 
 
 if (!have_posts()) : ?>

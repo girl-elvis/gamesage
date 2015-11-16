@@ -1,10 +1,38 @@
 // Game Posts
-.type-game header {margin-bottom: 0.6em;}
-.type-game .entry-summary {text-align: center;}
-.type-game .entry-summary p  {text-align: left;}
-.game-meta {display: block; padding-right: 1em; white-space: nowrap;
-border-top: 1px solid #DD6453;
-padding-top: 5px;text-align: left;}
+
+.type-game {
+	header {margin-bottom: 0.6em;}
+	.entry-summary {
+		text-align: center;
+		p {text-align: left;}
+	}
+}
+	
+
+.game-meta {
+	display: block; 
+	padding-right: 1em; 
+	//
+	border-top: 1px solid #DD6453;
+	padding-top: 5px;
+	text-align: left;
+}
+
+.single-game{
+	.meta{
+		border: 1px solid red;
+		border-radius: 5px;
+		padding: 1em;
+		margin-bottom: 1em;
+	}
+	.game-meta {
+		white-space: nowrap;
+		border: none;
+	}
+}
+
+
+
 
 .gameextra {@include doubleborder();}
 

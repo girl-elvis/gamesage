@@ -7,14 +7,20 @@
     float: none;
       font-size: 40px;
   display: block;
-  //height:  110px;
-  // background-image: url("../images/logo.png");
-  // background-repeat: no-repeat; 
 }
+
 .navbar-brand {
 height: auto;
 }
-.tagline {display:block; clear:both; text-transform: capitalize;}
+.tagline {
+  font-family: 'Cabin', sans-serif;
+  display:block; 
+  clear:both; 
+  text-align: center;
+font-size: 3rem;
+color: $brand-primary;
+}
+
 .navbar-nav {
     clear: left;
     float: none;
@@ -40,6 +46,7 @@ $colHighlight       : $hilight ; //highlight text colour
     color: $colDefault;
      width: 80%;
      padding-top: 9px;
+     padding-bottom: 0;
     &:hover, &:focus { 
       color: $colHighlight; }}
   .navbar-text {

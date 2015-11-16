@@ -2,6 +2,7 @@
 
 @import url(http://fonts.googleapis.com/css?family=Bentham);
 @import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400);
+@import url(https://fonts.googleapis.com/css?family=Cabin:700);
 
 * {
    font-size: 18px;
@@ -38,6 +39,7 @@ body {
 
 @mixin doubleborder() { // rewrite for reusability $colour, $bgcolour, $firstwidth, $secondwidth
  border: 1px solid $background;
+ border-radius: 5px;
   padding: 0px 15px 15px 15px;
   margin-bottom: 30px;
   box-shadow:
@@ -48,9 +50,22 @@ body {
 }
 
 /* Search */
-.search-form .form-inline .input-group {
-  width: 100%;
+
+.page-navigation {
+  margin: 1em 0 1.5em;
 }
+// .search-form.form-inline  {
+//   width: 100%;
+// }
+.search-form {
+  padding: 1em 0;
+  .input-group{
+    margin-left: 1em;
+    width: 45%;
+  }
+}
+
+
 .homesearch{
   @include doubleborder();
   padding: 1em;
@@ -58,8 +73,29 @@ body {
     background: url('../images/asktheguru.png') no-repeat ;
     margin: 0;
     height: 85px;
+    &.searchagain {
+      background: none;
+      height: 0;
+    }
+    &.searchgames {
+      background: none;
+      height: 0;
+    }
   }
 }
+
+// Seearch results
+.gameloop, .post-type-archive-game .theloop {
+  display:flex; 
+  flex-wrap:wrap;
+  article {
+    margin-bottom: 2em;
+    .card {height:100%;}
+  }
+  
+}
+
+
 
 
 /* Override Plugin CSS*/
@@ -69,14 +105,19 @@ body {
 border-bottom: none;
 margin-bottom: 0;
 padding-bottom: 0;
-
 } 
-.searchandfilter ul li li {
-    display: inline;
+.upw-posts .entry-image {
+    margin-bottom: 0.2em;
 }
-.searchandfilter label {
-    display: inline;
-    }
+
+
+// .searchandfilter ul li li {
+//     display: inline;
+// }
+// .searchandfilter label {
+//     display: inline;
+// }
+
 
 
     // CAROUSEL
@@ -102,7 +143,7 @@ padding-bottom: 0;
     text-align: left;
     white-space: nowrap;
     width: 100%;
-        @include doubleborder();
+       // @include doubleborder();
 }
 #carousel-custom .carousel-indicators li {
     background-color: $background;

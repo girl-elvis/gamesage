@@ -2,11 +2,8 @@
 
 <?php while (have_posts()) : the_post(); ?>
 
-<article id="game-wrapper" <?php post_class(); ?> >
- <header>
-      <h1 class="entry-title"><?php the_title(); ?></h1>
-      
-      <?php 
+
+ <?php 
     $designer = get_the_term_list( get_the_ID(), 'designer', 'Designed by: ', ', ');
 	$ages = get_the_term_list( get_the_ID(), 'age', 'Ages: ');
 
@@ -24,14 +21,14 @@
  	$learning = get_the_term_list( get_the_ID(), 'learning_time', 'Learning Time: ');
  	$firstplay = get_the_term_list( get_the_ID(), 'first-play', 'First Play Time: ');
 
-
 	?>
-	<div class="meta designer"> <?php echo $designer ; ?></div>
-	<div class="game-meta"><?php echo $ages ; ?>+</div>
-	<div class="game-meta"><?php echo $players ; ?></div>
-	<div class="game-meta"><?php echo $playtime ; ?></div>
-	<div class="game-meta"><?php echo $complexity ; ?></div>
 
+
+<article id="game-wrapper" <?php post_class(); ?> >
+ <header>
+      <h1 class="entry-title"><?php the_title(); ?></h1>
+      
+    
     </header>
 
 
@@ -39,14 +36,8 @@
 		<div class="row">
 			<div class="col-md-6"> 
 				<?php get_template_part('templates/carousel'); ?>
-			</div>
-			<div class="col-md-6">
-				<?php the_content(); ?>	
-			</div>
-		</div> <!-- end row -->
 
-		<div class="row">
-			<div class="gameextra col-md-8">
+<div class="gameextra ">
 				 <h3 class="icon">Take That</h2>
 			   	<p> <?php echo $takethat ; ?></p>
 			    <h3 class="icon">Fidget Factor</h2>
@@ -56,7 +47,8 @@
 			    <h3 class="icon">Again again</h2>
 			    <p> <?php echo $again ; ?></p>
 			</div>
-			<div class="gameextra-meta col-md-4">
+
+			<div class="gameextra-meta">
 				<p> <?php echo $learning ; ?></p>
 				<p> <?php echo $firstplay ; ?></p>
 				<p> <?php echo $playtime ; ?></p>
@@ -81,6 +73,28 @@
 
 				
 			</div>
+
+			
+			</div>
+			<div class="col-md-6">
+
+			 
+
+
+	<div class="meta">
+	<div class="game-meta"> <?php echo $designer ; ?></div>
+	<div class="game-meta"><?php echo $ages ; ?>+</div>
+	<div class="game-meta"><?php echo $players ; ?></div>
+	<div class="game-meta"><?php echo $playtime ; ?></div>
+	<div class="game-meta"><?php echo $complexity ; ?></div>
+</div>
+				<?php the_content(); ?>	
+			</div>
+		</div> <!-- end row -->
+
+		<div class="row">
+			
+
 		</div> <!-- end row -->
 	</div>
 

@@ -6,45 +6,28 @@
 
 
 
-get_search_form(  ); 
-
-// $list = array();
-// $item = array();  
-// if($_POST){
-// 	foreach($_POST as $key => $value){
-// 		if($value != ''){
-// 			$item['taxonomy'] = htmlspecialchars($key);
-// 			$item['terms'] = htmlspecialchars($value);
-// 			$item['field'] = 'slug';
-// 			$list[] = $item;
-// 		}		
-// 	}
-// 	$_SESSION['realty-search'] = !empty($list) ? $list : array();
-// }
-// $search = !empty($_SESSION['realty-search']) ? $_SESSION['realty-search'] : array();
-// $cleanArray = array_merge(array('relation' => 'AND'), $item);
 
 global $cleanArray;
 $list = array();
 $item = array();
-//print_r($_GET);
+$printlist= array();
+
 if ($_GET) {
 	foreach($_GET as $key => $value){
 		if($value != ''){
-			echo ($key . " : " . $value . "<br>");
+			//echo ($key . " : " . $value . "<br>");
 			$item['taxonomy'] = htmlspecialchars($key);
 			$item['terms'] = htmlspecialchars($value);
 			$item['field'] = 'slug';
 			$list[] = $item;
+			$printlist[$key]= $value;
+			
 		}
 	}
 
  $cleanArray = array_merge(array('relation' => 'AND'), $list);
 }
-
-
-//print_r($the_query->query_vars);
-
+//echo http_build_query($printlist, ' : ', ', ');
 
 
 $args['post_type'] = 'game';
@@ -54,16 +37,17 @@ $args['paged'] = $paged;
 $args['tax_query'] =  $cleanArray;
 //print_r ($args);
 $the_query = new WP_Query( $args );
+?>
 
+<div class="homesearch"><div class="text-hide"><h3>Ask the Guru</h3></div>
+		<?php 
+		get_template_part('templates/searchform', 'game'); 
+		get_template_part('templates/searchform', 'filter'); 
+		?>
+	</div>
 
-
- //$pagedx = $paged; 
- //echo ("paged: " . $pagedx); 
-
-
- echo ($the_query->found_posts > 0) ? '<h3 class="foundPosts">' . $the_query->found_posts. ' Games found</h3>' : '<h3 class="foundPosts">We found no results</h3>';
-
- ?><div class="row page-navigation">
+ <?php echo ($the_query->found_posts > 0) ? '<h3 class="foundPosts">' . $the_query->found_posts. ' Games found with ' . http_build_query($printlist, '', ', ') . '</h3>' : '<h3 class="foundPosts">We found no results</h3>'; ?>
+ <div class="row page-navigation">
   <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
 	<?php wp_pagenavi(array( 'query' => $the_query)); ?>
 </div>

@@ -34,8 +34,10 @@ unset($file, $filepath);
 
 add_action( 'after_setup_theme', 'cat_theme_setup' );
 function cat_theme_setup() {
-  add_image_size( 'slidethumb', 100, 100, 1 ); //  (cropped)
+  add_image_size( 'slidethumb', 9999, 100, false ); //  (cropped to height)
   add_image_size( 'slide', 9999, 300 ); //
+  add_image_size( 'widgethumb', 133, 9999, false ); // (cropped to width)
+  
 }
 
 
