@@ -16,18 +16,22 @@
 	border-top: 1px solid #DD6453;
 	padding-top: 5px;
 	text-align: left;
+	font-family: "Josefin Sans", sans-serif;
 }
 
 .single-game{
 	.meta{
-		border: 1px solid red;
+		
 		border-radius: 5px;
 		padding: 1em;
 		margin-bottom: 1em;
+		font-family: "Josefin Sans", sans-serif;
+		box-shadow: 0 0 1px 1px $brand-primary
 	}
 	.game-meta {
 		white-space: nowrap;
 		border: none;
+		font-family: "Josefin Sans", sans-serif;
 	}
 }
 

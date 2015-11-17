@@ -134,6 +134,7 @@ padding-bottom: 0;
     width: 100%;
     @include doubleborder();
     .glyphicon { color: $brand-primary;}
+    padding-top: 15px;
 
 }
 #carousel-custom .carousel-indicators {

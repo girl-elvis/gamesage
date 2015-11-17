@@ -22,6 +22,7 @@ if ( is_post_type_archive('game') || is_tax() ) {
   <?php get_search_form(); ?>
 <?php endif; ?>
 
+
 <div class="gameloop">
 
 <?php while (have_posts()) : the_post(); ?>
