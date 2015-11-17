@@ -72,6 +72,21 @@ function nav_parent_class( $classes, $item ) {
     return $classes;
 }
 
+function add_styles()
+{
+    ?>
+    <style type="text/css">
+    
+
+.single-game .game-meta {
+    white-space: normal;
+}
+</style>
+
+    <?php
+}
+add_action('wp_head', 'add_styles');
+
 
  
 // Setup Admin Thumbnail Size  
@@ -161,7 +176,7 @@ function emf_add_custom_types( $query ) {
     return $query;
   }
 }
-add_filter( 'pre_get_posts', 'emf_add_custom_types' );
+//add_filter( 'pre_get_posts', 'emf_add_custom_types' );
 
 
 // Custom Search / filter

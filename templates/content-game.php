@@ -5,7 +5,9 @@
     <?php //get_template_part('templates/entry-meta'); ?>
   </header>
   <div class="entry-summary">
+  	  <div class="entry-summary"><a href="<?php the_permalink(); ?>">
   	<?php the_post_thumbnail( 'thumb' ); ?>
+	</a>
     <?php the_excerpt(); 
 
 
