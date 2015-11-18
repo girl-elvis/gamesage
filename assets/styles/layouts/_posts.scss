@@ -52,4 +52,11 @@ h1.entry-title{margin-top: 0}
 }
 .card {
     @include doubleborder();
+     .entry-summary > a:first-of-type {    
+    	height: 170px;
+	    background: $background;
+	    display: block;
+	    padding-top: 10px;
+	    margin-bottom: 10px;
+	}
 }

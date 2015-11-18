@@ -30,4 +30,14 @@ if ( is_post_type_archive('game') || is_tax() ) {
 <?php endwhile; ?>
 
 </div>
-<?php wp_pagenavi(); ?>
+
+<?php 
+	if(function_exists('wp_pagenavi')) : 
+		wp_pagenavi(); 
+	else : 
+		the_posts_navigation();
+	endif; 
+
+?>
+
+
