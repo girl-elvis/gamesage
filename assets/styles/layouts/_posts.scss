@@ -59,4 +59,22 @@ h1.entry-title{margin-top: 0}
 	    padding-top: 10px;
 	    margin-bottom: 10px;
 	}
+	.meta-complexity a {
+		background: url('../images/cogs.png') no-repeat ;
+		display: inline-block;
+		width: 100px;
+		height: 25px;
+		vertical-align: top;
+		span{
+			@extend	.offscreen;
+		
+		}
+		
+		&[href*="2"] { background-position: 0 -25px}
+&[href*="3"] { background-position: 0 -50px}
+		&[href*="4"] { background-position: 0 -75px}
+
+	}
+
+	
 }

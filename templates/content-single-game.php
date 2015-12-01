@@ -89,6 +89,26 @@
 	<div class="game-meta"><?php echo $complexity ; ?></div>
 </div>
 				<?php the_content(); ?>	
+
+<div ><a href=#>Show More V </a></div>
+	<div id="samjoe" class="hide">
+	<?php if(get_field('sam_says')) { ?>
+		<div class="sam_says"><h3>Sam Says...</h3>
+		<?php the_field('sam_says'); ?>	
+		</div>
+
+	<?php } ?>
+	<?php if(get_field('joe_says')) { ?>
+		<div class="joe_says"><h3>Joe Says...</h3>
+		<?php the_field('joe_says'); ?>	
+		</div>
+
+	<?php } ?>
+
+
+	</div> <!-- end samjoe -->
+
+
 			</div>
 		</div> <!-- end row -->
 

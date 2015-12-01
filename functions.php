@@ -183,6 +183,22 @@ function emf_add_custom_types( $query ) {
 
 function buildSelect($tax){
 
+
+  // if ($_GET) {
+  //   foreach($_GET as $key => $value){
+  //     if($value != ''){
+  //       //echo ($key . " : " . $value . "<br>");
+  //       $item['taxonomy'] = htmlspecialchars($key);
+  //       $item['terms'] = htmlspecialchars($value);
+  //       $item['field'] = 'slug';
+  //       $list[] = $item;
+  //       //$printlist[$key]= $value;
+        
+  //     }
+  //   }
+  // }
+//print_r($_GET);
+
   $terms = get_terms($tax);
   $taxonomy = get_taxonomy( $tax );
   $labels =get_taxonomy_labels( $taxonomy );
@@ -191,7 +207,10 @@ function buildSelect($tax){
   $x = '<select name="'. $tax .'">';
   $x .= '<option value="">'. ucfirst($taxname) .'</option>';
   foreach ($terms as $term) {
-     $x .= '<option value="' . $term->slug . '">' . $term->name . '</option>';
+    // $which = $_GET[$term]
+    // $select = ( != "") ? "selected" : "";
+    $x .= '<option value="' . $term->slug . '">' . $term->name . '</option>';
+     //$x .= '<option value="' . $term->slug . '"' . $select . '>' . $term->name . '</option>';
   }
   $x .= '</select>';
 
