@@ -19,6 +19,11 @@ function title() {
       return  $title;
   } elseif ( is_post_type_archive('game') ) {
       return __('All Games', 'sage');
+  } elseif ( is_tax()){
+      $tax = get_taxonomy( get_queried_object()->taxonomy );
+    /* translators: 1: Taxonomy singular name, 2: Current taxonomy term */
+      $title = sprintf( __( 'All Games with %1$s %2$s' ), $tax->labels->singular_name, single_term_title( '', false ) );
+      return $title;
   } elseif (is_archive()) {
       return get_the_archive_title();
   } elseif (is_404()) {

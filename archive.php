@@ -26,7 +26,10 @@ if ( is_post_type_archive('game') || is_tax() ) {
 <div class="gameloop">
 
 <?php 
-query_posts($query_string . '&orderby=rand');
+if ( is_post_type_archive('game') || is_tax()) {
+	query_posts($query_string . '&orderby=rand');	
+}
+
 while (have_posts()) : the_post(); ?>
  <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
 <?php endwhile; ?>
