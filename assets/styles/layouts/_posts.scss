@@ -56,12 +56,17 @@ h1.entry-title{margin-top: 0}
 }
 .card {
     @include doubleborder();
+    img {
+    	max-width: 100%;
+		height: auto;
+    }
      .entry-summary > a:first-of-type {    
     	height: 170px;
 	    background: $background;
 	    display: block;
 	    padding-top: 10px;
 	    margin-bottom: 10px;
+
 	}
 	.meta-complexity a {
 		background: url('../images/cogs.png') no-repeat ;
@@ -76,8 +81,8 @@ h1.entry-title{margin-top: 0}
 		}
 		
 		&[href*="2"] { background-position: 0 -22px}
-&[href*="3"] { background-position: 0 -44px}
-		&[href*="4"] { background-position: 0 -67px}
+		&[href*="3"] { background-position: 0 -44px}
+		&[href*="4"] { background-position: 0 -69px}
 
 	}
 

@@ -188,21 +188,6 @@ function emf_add_custom_types( $query ) {
 function buildSelect($tax){
 
 
-  // if ($_GET) {
-  //   foreach($_GET as $key => $value){
-  //     if($value != ''){
-  //       //echo ($key . " : " . $value . "<br>");
-  //       $item['taxonomy'] = htmlspecialchars($key);
-  //       $item['terms'] = htmlspecialchars($value);
-  //       //$item['field'] = 'slug';
-  //       $list[] = $item;
-  //       //$printlist[$key]= $value;
-        
-  //     }
-  //   }
-  // }
-//print_r($_GET["complexity"]);
-  // print_r($list);
 
   $terms = get_terms($tax, 'orderby=natural');
   //$terms = natsort($terms);

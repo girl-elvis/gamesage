@@ -45,7 +45,7 @@ $the_query = new WP_Query( $args );
 ?>
 
 <div class="page-header ">
-  <h1 class=''>Search: <?php echo $gets;  ?></h1>
+  <h1 class=''>Search: <?php echo $gets . " (" . $the_query->post_count . " results)";;  ?></h1>
 </div>
 
 <div class="homesearch"><div class="text-hide"><h3 class="searchagain">Search Again</h3></div>
