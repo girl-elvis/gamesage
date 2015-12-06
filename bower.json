@@ -8,11 +8,19 @@
   "private": true,
   "dependencies": {
     "modernizr": "2.8.2",
+    "fontawesome": "4.3.0",
     "bootstrap-sass-official": "3.3.5"
   },
+
   "overrides": {
     "modernizr": {
       "main": "./modernizr.js"
+    },
+    "fontawesome": {
+      "main": [
+          "./css/font-awesome.css",
+          "./fonts/*"
+        ] 
     },
     "bootstrap-sass-official": {
       "main": [
