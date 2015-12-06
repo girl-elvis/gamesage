@@ -179,6 +179,10 @@ function emf_add_custom_types( $query ) {
 //add_filter( 'pre_get_posts', 'emf_add_custom_types' );
 
 
+
+
+
+
 // Custom Search / filter
 
 function buildSelect($tax){
@@ -190,27 +194,34 @@ function buildSelect($tax){
   //       //echo ($key . " : " . $value . "<br>");
   //       $item['taxonomy'] = htmlspecialchars($key);
   //       $item['terms'] = htmlspecialchars($value);
-  //       $item['field'] = 'slug';
+  //       //$item['field'] = 'slug';
   //       $list[] = $item;
   //       //$printlist[$key]= $value;
         
   //     }
   //   }
   // }
-//print_r($_GET);
+//print_r($_GET["complexity"]);
+  // print_r($list);
 
-  $terms = get_terms($tax);
+  $terms = get_terms($tax, 'orderby=natural');
+  //$terms = natsort($terms);
+  //print_r($terms);
   $taxonomy = get_taxonomy( $tax );
   $labels =get_taxonomy_labels( $taxonomy );
   $taxname = ($labels->singular_name) ;
 
   $x = '<select name="'. $tax .'">';
   $x .= '<option value="">'. ucfirst($taxname) .'</option>';
+
   foreach ($terms as $term) {
     // $which = $_GET[$term]
-    // $select = ( != "") ? "selected" : "";
-    $x .= '<option value="' . $term->slug . '">' . $term->name . '</option>';
-     //$x .= '<option value="' . $term->slug . '"' . $select . '>' . $term->name . '</option>';
+    $select = ( $_GET[$tax] == $term->name) ? "selected" : "";
+
+    
+    //print_r($_GET[$tax]);
+    $x .= '<option value="' . $term->slug . '" ' . $select . '>' . $term->name . '</option>';
+     //$x .= '<option value="' . $term->slug . '"' . $select .'>' . $term->name . '</option>';
   }
   $x .= '</select>';
 
@@ -219,5 +230,26 @@ function buildSelect($tax){
   return $x;
 }
 
+
+
+
+// Adds sortby=natural to get_terms
+
+add_filter('get_terms', 'sort_terms_naturally', 20, 3);
+function sort_terms_naturally ( $terms, $taxonomies, $args ) {
+  if ( isset($args['orderby']) && $args['orderby'] == 'natural' ) {
+    $sort_terms = array();
+ 
+    foreach($terms as $term) {
+      $sort_terms[$term->name] = $term;
+    }
+ 
+    uksort( $sort_terms, 'strnatcmp');
+      
+    if ( strtolower($args['order']) == "desc") $sort_terms = array_reverse($sort_terms);
+  
+    return $sort_terms;
+  }
+}
 
 ?>

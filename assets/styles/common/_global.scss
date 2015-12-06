@@ -4,9 +4,9 @@
 @import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400);
 @import url(https://fonts.googleapis.com/css?family=Cabin:700);
 
-* {
+/** {
    font-size: 18px;
-}
+}*/
 
 body, p { font-family: Bentham, serif; 	}
 
@@ -22,7 +22,7 @@ body {
 	background-image: url("../images/bgtile.png");
 }
 
-
+.fa {color: $brand-primary;}
 
 
 
@@ -63,10 +63,9 @@ body {
   h3 {
     background: url('../images/asktheguru.png') no-repeat ;
     margin: 0;
-    height: 85px;
+    height: 77px;
     &.searchagain {
-      background: none;
-      height: 0;
+      background: transparent url("../images/searchagain.png") no-repeat;
     }
     &.searchgames {
       background: none;
@@ -74,6 +73,8 @@ body {
     }
   }
 }
+
+
 
 // Seearch results
 .gameloop, .post-type-archive-game .theloop {
@@ -85,6 +86,7 @@ body {
   }
   
 }
+
 
 
 

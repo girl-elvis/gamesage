@@ -18,7 +18,7 @@ if ($_GET) {
 			//echo ($key . " : " . $value . "<br>");
 			$item['taxonomy'] = htmlspecialchars($key);
 			$item['terms'] = htmlspecialchars($value);
-			$item['field'] = 'slug';
+			$item['field'] = 'name';
 			$list[] = $item;
 			$printlist[$key]= $value;
 			
@@ -27,7 +27,12 @@ if ($_GET) {
 
  $cleanArray = array_merge(array('relation' => 'AND'), $list);
 }
-//echo http_build_query($printlist, ' : ', ', ');
+
+$gets = http_build_query($printlist, '', ', ');
+$gets = str_replace('=', ' ', $gets);
+$gets = str_replace('num_players', 'Number of Players', $gets);
+$gets = str_replace('regular_play_times', 'Play time', $gets);
+$gets = str_replace('game_category ', '', $gets);
 
 
 $args['post_type'] = 'game';
@@ -39,14 +44,18 @@ $args['tax_query'] =  $cleanArray;
 $the_query = new WP_Query( $args );
 ?>
 
-<div class="homesearch"><div class="text-hide"><h3>Ask the Guru</h3></div>
+<div class="page-header ">
+  <h1 class=''>Search: <?php echo $gets;  ?></h1>
+</div>
+
+<div class="homesearch"><div class="text-hide"><h3 class="searchagain">Search Again</h3></div>
 		<?php 
 		get_template_part('templates/searchform', 'game'); 
 		get_template_part('templates/searchform', 'filter'); 
 		?>
 	</div>
 
- <?php echo ($the_query->found_posts > 0) ? '<h3 class="foundPosts">' . $the_query->found_posts. ' Games found with ' . http_build_query($printlist, '', ', ') . '</h3>' : '<h3 class="foundPosts">We found no results</h3>'; ?>
+ <?php //echo ($the_query->found_posts > 0) ? '<h3 class="foundPosts">' . $the_query->found_posts. ' Games found with ' . http_build_query($printlist, '', ', ') . '</h3>' : '<h3 class="foundPosts">We found no results</h3>'; ?>
  <div class="row page-navigation">
   <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
 	<?php wp_pagenavi(array( 'query' => $the_query)); ?>

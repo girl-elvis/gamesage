@@ -11,7 +11,7 @@
 
 .game-meta {
 	display: block; 
-	padding-right: 1em; 
+	padding-right: 0; 
 	//
 	border-top: 1px solid #DD6453;
 	padding-top: 5px;
@@ -32,6 +32,10 @@
 		white-space: nowrap;
 		border: none;
 		font-family: "Josefin Sans", sans-serif;
+	}
+
+	.yasr-visitor-votes{
+		margin-bottom: 20px;
 	}
 }
 
@@ -61,18 +65,19 @@ h1.entry-title{margin-top: 0}
 	}
 	.meta-complexity a {
 		background: url('../images/cogs.png') no-repeat ;
+		background-position: 0 -1px;
 		display: inline-block;
 		width: 100px;
-		height: 25px;
+		height: 21px;
 		vertical-align: top;
 		span{
 			@extend	.offscreen;
 		
 		}
 		
-		&[href*="2"] { background-position: 0 -25px}
-&[href*="3"] { background-position: 0 -50px}
-		&[href*="4"] { background-position: 0 -75px}
+		&[href*="2"] { background-position: 0 -22px}
+&[href*="3"] { background-position: 0 -44px}
+		&[href*="4"] { background-position: 0 -67px}
 
 	}
 

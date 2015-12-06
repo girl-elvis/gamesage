@@ -13,7 +13,10 @@ function title() {
         return __('Latest Posts', 'sage');
       }
   } elseif (is_search()) {
-      return sprintf(__('Search Results for %s', 'sage'), get_search_query());
+    global $wp_query;
+      $title = sprintf(__('Search: %s', 'sage'), "<i>" . get_search_query() . "</i>") ;
+      $title .= " (" . $wp_query->post_count . " results)";
+      return  $title;
   } elseif ( is_post_type_archive('game') ) {
       return __('All Games', 'sage');
   } elseif (is_archive()) {
