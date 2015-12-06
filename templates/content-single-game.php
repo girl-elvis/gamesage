@@ -90,7 +90,7 @@
 </div>
 				<?php the_content(); ?>	
 
-<div ><a href=#>Show More V </a></div>
+<div  class="showmore"><a href="#"><i class="fa fa-arrow-circle-o-down"></i> Read More </a></div>
 	<div id="samjoe" class="hide">
 	<?php if(get_field('sam_says')) { ?>
 		<div class="sam_says"><h3>Sam Says...</h3>
