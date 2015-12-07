@@ -18,7 +18,8 @@ if ($_GET) {
 			//echo ($key . " : " . $value . "<br>");
 			$item['taxonomy'] = htmlspecialchars($key);
 			$item['terms'] = htmlspecialchars($value);
-			$item['field'] = 'name';
+			$item['field'] = 'slug';
+			//$item['name'] = 'name';
 			$list[] = $item;
 			$printlist[$key]= $value;
 			
@@ -28,12 +29,14 @@ if ($_GET) {
  $cleanArray = array_merge(array('relation' => 'AND'), $list);
 }
 
+
 $gets = http_build_query($printlist, '', ', ');
 $gets = str_replace('=', ' ', $gets);
+
 $gets = str_replace('num_players', 'Number of Players', $gets);
 $gets = str_replace('regular_play_times', 'Play time', $gets);
 $gets = str_replace('game_category ', '', $gets);
-
+$gets = str_replace('-', ' ', $gets);
 
 $args['post_type'] = 'game';
 $args['showposts'] = 9;
@@ -42,10 +45,12 @@ $args['paged'] = $paged;
 $args['tax_query'] =  $cleanArray;
 //print_r ($args);
 $the_query = new WP_Query( $args );
+//print_r($the_query->found_posts);
+
 ?>
 
 <div class="page-header ">
-  <h1 class=''>Search: <?php echo $gets . " (" . $the_query->post_count . " results)";;  ?></h1>
+  <h1 class=''>Search: <?php echo $gets . " (" . $the_query->found_posts . " results)";  ?></h1>
 </div>
 
 <div class="homesearch"><div class="text-hide"><h3 class="searchagain">Search Again</h3></div>

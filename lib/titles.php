@@ -20,9 +20,12 @@ function title() {
   } elseif ( is_post_type_archive('game') ) {
       return __('All Games', 'sage');
   } elseif ( is_tax()){
+    global $wp_query;
+    $obj = (get_queried_object());
       $tax = get_taxonomy( get_queried_object()->taxonomy );
     /* translators: 1: Taxonomy singular name, 2: Current taxonomy term */
       $title = sprintf( __( 'All Games with %1$s %2$s' ), $tax->labels->singular_name, single_term_title( '', false ) );
+      $title .= " (" . $obj->count . " results)";
       return $title;
   } elseif (is_archive()) {
       return get_the_archive_title();

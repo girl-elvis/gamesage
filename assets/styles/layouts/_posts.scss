@@ -56,6 +56,9 @@ h1.entry-title{margin-top: 0}
 }
 .card {
     @include doubleborder();
+    .entry-title{
+    	word-wrap: break-word;
+    }
     img {
     	max-width: 100%;
 		height: auto;
