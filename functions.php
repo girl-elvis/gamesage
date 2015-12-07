@@ -221,8 +221,12 @@ function buildSelect($tax){
 // Adds sortby=natural to get_terms
 
 add_filter('get_terms', 'sort_terms_naturally', 20, 3);
+
+
 function sort_terms_naturally ( $terms, $taxonomies, $args ) {
-  if ( isset($args['orderby']) && $args['orderby'] == 'natural' ) {
+  // print_r($args['orderby']);
+  if (  $args['orderby'] == 'natural' ) {
+
     $sort_terms = array();
  
     foreach($terms as $term) {
@@ -234,7 +238,12 @@ function sort_terms_naturally ( $terms, $taxonomies, $args ) {
     if ( strtolower($args['order']) == "desc") $sort_terms = array_reverse($sort_terms);
   
     return $sort_terms;
+
+  } else {
+
+    return $terms;
   }
-}
+
+} 
 
 ?>
