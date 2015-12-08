@@ -104,16 +104,16 @@ padding-bottom: 0;
 }
 
 
-// .searchandfilter ul li li {
+/*// .searchandfilter ul li li {
 //     display: inline;
 // }
 // .searchandfilter label {
 //     display: inline;
-// }
+// }*/
 
 
 
-    // CAROUSEL
+/*    // CAROUSEL*/
 
 .carousel-inner > .item {}
 
@@ -185,6 +185,14 @@ padding-bottom: 0;
 }
 
 
-
+/*Modal*/
+.modal-header {border-bottom: none;}
+.modal-body img {
+  margin: 0px auto;
+display: block;
+}
+.modal-footer{
+  border-top: none;
+}
 
 

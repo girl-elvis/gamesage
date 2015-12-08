@@ -38,12 +38,11 @@ foreach ($sliderimages as $index => $slide) {
         <h3 id="myModalLabel">Modal header</h3>
       </div>
       <div class="modal-body">
-        <p>One fine body…</p>
+        <p><?php echo wp_get_attachment_image( $slide, 'large' ); ?></p>
       </div>
       <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        <button class="btn btn-primary">Save changes</button>
-      </div>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+           </div>
     </div>
 
 
