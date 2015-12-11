@@ -16,7 +16,7 @@ if (!have_posts()) : ?>
 	  <?php get_search_form(); ?>
 <?php endif; ?>
 
-<div class="theloop">
+<div class="gameloop">
 
 <?php while (have_posts()) : the_post(); ?>
   <?php get_template_part('templates/content', 'game'); ?>
@@ -24,4 +24,8 @@ if (!have_posts()) : ?>
 
 </div>
 
-<?php wp_pagenavi(); ?>
+<?php if(function_exists('wp_pagenavi')) : 
+		wp_pagenavi(); 
+	else : 
+		the_posts_navigation();
+	endif;  ?>

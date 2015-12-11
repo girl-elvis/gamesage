@@ -14,8 +14,9 @@ function title() {
       }
   } elseif (is_search()) {
     global $wp_query;
+    //print_r($wp_query);
       $title = sprintf(__('Search: %s', 'sage'), "<i>" . get_search_query() . "</i>") ;
-      $title .= " (" . $wp_query->post_count . " results)";
+      $title .= " (" . $wp_query->found_posts . " results)";
       return  $title;
   } elseif ( is_post_type_archive('game') ) {
       return __('All Games', 'sage');

@@ -47,6 +47,11 @@ $args['tax_query'] =  $cleanArray;
 $the_query = new WP_Query( $args );
 //print_r($the_query->found_posts);
 
+$temp_query = $wp_query;
+$wp_query   = NULL;
+$wp_query   = $the_query;
+
+
 ?>
 
 <div class="page-header ">
@@ -61,9 +66,18 @@ $the_query = new WP_Query( $args );
 	</div>
 
  <?php //echo ($the_query->found_posts > 0) ? '<h3 class="foundPosts">' . $the_query->found_posts. ' Games found with ' . http_build_query($printlist, '', ', ') . '</h3>' : '<h3 class="foundPosts">We found no results</h3>'; ?>
- <div class="row page-navigation">
+ <div class="row page-navigation nav-links">
   <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
-	<?php wp_pagenavi(array( 'query' => $the_query)); ?>
+		<?php 
+	// if(function_exists('wp_pagenavi')) : 
+	// 	wp_pagenavi(array( 'query' => $the_query )); 
+	// else : 
+	// 	echo '<div class="nav-previous">';
+	// 		next_posts_link( 'Older Posts' , $custom_query->max_num_pages ); 
+	// 		echo "<div>";
+	// 	//the_posts_navigation();
+	// endif; 
+	?>
 </div>
 	<div class='gameloop'>
 
@@ -78,16 +92,30 @@ $the_query = new WP_Query( $args );
 
 
 	?>
-<?php wp_reset_query(); ?>
+
 </div>
 
 
 
-<div class="row page-navigation">
-	<?php wp_pagenavi(array( 'query' => $the_query )); ?>
+<div class="row page-navigation nav-links">
+	<?php 
+	if(function_exists('wp_pagenavi')) : 
+		wp_pagenavi(array( 'query' => $the_query )); 
+	else : 
+		// echo '<div class="nav-previous">';
+		// 	next_posts_link( 'Older Posts' , $custom_query->max_num_pages ); 
+		// 	echo "<div>";
+			the_posts_navigation();
+	endif; 
+	?>
 </div>
 
 
+<?php wp_reset_query(); 
 
+$wp_query = NULL;
+$wp_query = $temp_query;
+
+?>
 
 

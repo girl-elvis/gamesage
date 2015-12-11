@@ -13,4 +13,8 @@
  <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
 <?php endwhile; ?>
 
-<?php the_posts_navigation(); ?>
+<?php if(function_exists('wp_pagenavi')) : 
+		wp_pagenavi(); 
+	else : 
+		the_posts_navigation();
+	endif;  ?>

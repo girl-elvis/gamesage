@@ -188,8 +188,8 @@ function emf_add_custom_types( $query ) {
 function buildSelect($tax){
 
 
-
-  $terms = get_terms($tax, 'orderby=natural');
+  $order =  ($tax == "regular_play_times") ? '' : "&orderby=natural" ;
+  $terms = get_terms($tax,  'parent=0' . $order);
   //$terms = natsort($terms);
   //print_r($terms);
   $taxonomy = get_taxonomy( $tax );
@@ -245,5 +245,9 @@ function sort_terms_naturally ( $terms, $taxonomies, $args ) {
   }
 
 } 
+
+
+
+
 
 ?>

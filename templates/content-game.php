@@ -1,4 +1,4 @@
-<article <?php post_class('col-sm-4'); ?>>
+<article <?php $classes = array("col-sm-4", "maingame"); post_class($classes); ?>>
 	<div class='card'>
   <header>
     <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
