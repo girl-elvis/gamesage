@@ -1,4 +1,4 @@
-<article <?php $classes = array("col-sm-4", "maingame"); post_class($classes); ?>>
+<article <?php $classes = array("col-xs-12", "col-sm-4", "maingame"); post_class($classes); ?>>
 	<div class='card'>
   <header>
     <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -15,20 +15,22 @@
     </div>
 
  <?php
-	$ages = get_the_term_list( get_the_ID(), 'age', 'Ages: ', ',', '');
+	
 
-	$args = array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'names');
-	$players = wp_get_object_terms( get_the_ID(), 'num_players', $args);
-	$players = 	'Number of Players: ' . $players[0] . '-' . array_pop($players);
-	$playtime = get_the_term_list( get_the_ID(), 'regular_play_times', 'Regular Play Time: ');
-	//$complexity = get_the_term_list( get_the_ID(), 'complexity','Complexity: <span>', '' ,'</span>' );
-	$complexity = get_the_terms( get_the_ID(), 'complexity' );
-	$comp_url = (get_term_link( ($complexity[0]->term_id), 'complexity' )); 
+		$ages = get_the_term_list( get_the_ID(), 'age', 'Ages: ', ',', '');
+
+		$args = array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'names');
+		$players = wp_get_object_terms( get_the_ID(), 'num_players', $args);
+		$players = 	'Number of Players: ' . $players[0] . '-' . array_pop($players);
+		$playtime = get_the_term_list( get_the_ID(), 'regular_play_times', 'Regular Play Time: ');
+		//$complexity = get_the_term_list( get_the_ID(), 'complexity','Complexity: <span>', '' ,'</span>' );
+		$complexity = get_the_terms( get_the_ID(), 'complexity' );
+		$comp_url = (get_term_link( ($complexity[0]->term_id), 'complexity' )); 
 
 
 
- 	$learning = get_the_term_list( get_the_ID(), 'learning_time', 'Learning Time: ');
- 	$firstplay = get_the_term_list( get_the_ID(), 'first-play', 'First Play Time: ');
+	 	$learning = get_the_term_list( get_the_ID(), 'learning_time', 'Learning Time: ');
+	 	$firstplay = get_the_term_list( get_the_ID(), 'first-play', 'First Play Time: ');
 
 
 	?>

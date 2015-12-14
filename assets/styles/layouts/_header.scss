@@ -5,12 +5,13 @@
 
 .navbar-header {
     float: none;
-      font-size: 40px;
+      font-size: 27px;
   display: block;
 }
 
 .navbar-brand {
 height: auto;
+
 }
 .tagline {
   font-family: 'Cabin', sans-serif;
@@ -41,10 +42,12 @@ $colDefault     : #fff; //default text colour
 $colHighlight       : $hilight ; //highlight text colour
 
 .navbar-default {
+
+    margin-bottom: 0;
  
   .navbar-brand {
     color: $colDefault;
-     width: 80%;
+     width: 100%;
      padding-top: 9px;
      padding-bottom: 0;
     &:hover, &:focus { 
@@ -70,10 +73,15 @@ $colHighlight       : $hilight ; //highlight text colour
         background-color: $bgHighlight; }}}
   .navbar-toggle {
     border-color: $bgHighlight;
+    float: none;
+    margin-left: 15px;
+    padding: 5px 5px;
+    font-size: 0.5em;
+  line-height: 1em;
     &:hover, &:focus {
       background-color: $bgHighlight; }
     .icon-bar {
-      background-color: $colDefault; }}
+      background-color: $bgDefault }}
   .navbar-collapse,
   .navbar-form {
     border-color: $colDefault; }

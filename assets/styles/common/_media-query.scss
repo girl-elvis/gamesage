@@ -13,12 +13,24 @@
 	/* Small Devices, Tablets */
 	@media only screen and (min-width : 768px){
 
+		.navbar-default { margin-bottom: 20px;}
 	 	.navbar-default .navbar-brand {     width: 100%; }
 		.breadcrumb_last{ display: inline;}
 		.h1, h1 {
 	    font-size: 26px;
-		}
+	    margin-top: 20px;}
+		
 		h1.entry-title{margin-top: 10px}
+		.page-header { margin: 0px 0px 20px;}
+
+		.homesearch h3{height: 77px;}
+		.search-form {
+		 	padding: 1em 0;
+		 	.input-group{
+			    margin-left: 1em;
+			    width: 45%;
+		  }
+		}
  	}
 	/* Medium Devices, Desktops */
 	@media only screen and (min-width : 992px){ }

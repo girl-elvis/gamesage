@@ -15,7 +15,8 @@ h1, h2, h3, h4, h5, h6 , #archive-header, .page-title
 
 #site-sub-navigation {font-family: Bentham, serif;	}
 
-h1, .h1 {font-size: 21px;}
+h1, .h1 {font-size: 21px; margin-top: 6px;}
+
 
 body {
 	background-color: $background;
@@ -45,32 +46,31 @@ body {
 .page-navigation {
   margin: 1em 0 1.5em;
 }
-// .search-form.form-inline  {
+/*// .search-form.form-inline  {
 //   width: 100%;
-// }
-.search-form {
-  padding: 1em 0;
-  .input-group{
-    margin-left: 1em;
-    width: 45%;
-  }
-}
+// }*/
+
 
 
 .homesearch{
   @include doubleborder();
   padding: 1em;
   h3 {
-    background: url('../images/asktheguru.png') no-repeat ;
+    background-image: url('../images/asktheguru.png')  ;
     margin: 0;
-    height: 77px;
+    
+    background-size: contain;
+    background-repeat: no-repeat;
     &.searchagain {
-      background: transparent url("../images/searchagain.png") no-repeat;
+      background-image: url("../images/searchagain.png") ;
     }
     &.searchgames {
       background: none;
       height: 0;
     }
+  }
+  .input-group-btn .search-submit {
+    margin-left: 5px;
   }
 }
 
@@ -88,8 +88,12 @@ body {
 }
 
 
-
-
+/*Sidebar, widgets etc*/
+.widget .search-form .input-group {
+  width: 100%;
+  display: block;
+  margin-left: 0;
+}
 
 /* Override Plugin CSS*/
 
