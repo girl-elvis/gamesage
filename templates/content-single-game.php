@@ -34,7 +34,40 @@
 
 	<div class="entry-content">
 		<div class="row">
-			<div class="col-md-6"> 
+			<div class="col-md-6 col-md-push-6">
+
+	<div class="meta">
+	<div class="game-meta"> <?php echo $designer ; ?></div>
+	<div class="game-meta"><?php echo $ages ; ?>+</div>
+	<div class="game-meta"><?php echo $players ; ?></div>
+	<div class="game-meta"><?php echo $playtime ; ?></div>
+	<div class="game-meta"><?php echo $complexity ; ?></div>
+</div>
+				<?php the_content(); ?>	
+
+<div  class="showmore"><a href="#"><i class="fa fa-arrow-circle-o-down"></i> Read More </a></div>
+	<div id="samjoe" class="hide">
+	<?php if(get_field('sam_says')) { ?>
+		<div class="sam_says"><h3>Sam Says...</h3>
+		<?php the_field('sam_says'); ?>	
+		</div>
+
+	<?php } ?>
+	<?php if(get_field('joe_says')) { ?>
+		<div class="joe_says"><h3>Joe Says...</h3>
+		<?php the_field('joe_says'); ?>	
+		</div>
+
+	<?php } ?>
+
+
+	</div> <!-- end samjoe -->
+
+
+			</div>
+
+
+			<div class="col-md-6 col-md-pull-6 imgextracol"> 
 				<?php get_template_part('templates/carousel'); ?>
 
 <div class="gameextra ">
@@ -76,40 +109,7 @@
 
 			
 			</div>
-			<div class="col-md-6">
-
-			 
-
-
-	<div class="meta">
-	<div class="game-meta"> <?php echo $designer ; ?></div>
-	<div class="game-meta"><?php echo $ages ; ?>+</div>
-	<div class="game-meta"><?php echo $players ; ?></div>
-	<div class="game-meta"><?php echo $playtime ; ?></div>
-	<div class="game-meta"><?php echo $complexity ; ?></div>
-</div>
-				<?php the_content(); ?>	
-
-<div  class="showmore"><a href="#"><i class="fa fa-arrow-circle-o-down"></i> Read More </a></div>
-	<div id="samjoe" class="hide">
-	<?php if(get_field('sam_says')) { ?>
-		<div class="sam_says"><h3>Sam Says...</h3>
-		<?php the_field('sam_says'); ?>	
-		</div>
-
-	<?php } ?>
-	<?php if(get_field('joe_says')) { ?>
-		<div class="joe_says"><h3>Joe Says...</h3>
-		<?php the_field('joe_says'); ?>	
-		</div>
-
-	<?php } ?>
-
-
-	</div> <!-- end samjoe -->
-
-
-			</div>
+			
 		</div> <!-- end row -->
 
 		<div class="row">

@@ -1,19 +1,20 @@
-/* global styles here*/
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans|Bentham|Cabin);
 
-@import url(http://fonts.googleapis.com/css?family=Bentham);
-@import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400);
-@import url(https://fonts.googleapis.com/css?family=Cabin:700);
+$headerfontface: 'Josefin Sans', sans-serif ;
+$contentfontface: 'Bentham', serif;
+$varaboe: 20px;
 
 /** {
    font-size: 18px;
 }*/
 
-body, p { font-family: Bentham, serif; 	}
+
+body, p { font-family: $contentfontface; font-weight: normal;	}
 
 h1, h2, h3, h4, h5, h6 , #archive-header, .page-title 
-{font-family: "Josefin Sans", sans-serif; font-weight: 400;	}
+{font-family: 'Josefin Sans', serif; font-weight: 400;	}
 
-#site-sub-navigation {font-family: Bentham, serif;	}
+#site-sub-navigation {font-family: $headerfontface;	}
 
 h1, .h1 {font-size: 21px; margin-top: 6px;}
 
@@ -89,6 +90,18 @@ body {
 
 
 /*Sidebar, widgets etc*/
+
+.sidebar-primary .main {
+    border-bottom: 5px solid #DD6453;
+    margin-bottom: 2em;
+  }
+
+.sidebar {    
+  max-width: 200px;
+    margin: 0px auto;
+}
+
+
 .widget .search-form .input-group {
   width: 100%;
   display: block;
