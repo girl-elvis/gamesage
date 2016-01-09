@@ -4,3 +4,36 @@
 
     border-bottom: none;
 }
+
+
+
+.home .thecontent {
+	@extend .hidden-xs;
+
+}
+
+.home .main img, .home .main span img{
+	height: auto;
+	max-width: 100%;
+}
+
+.home .browse {
+	font-size: medium;
+	font-weight: 100;
+	border-top: 1px solid $brand-primary;
+	border-bottom: 1px solid $brand-primary;
+	padding: 5px 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.home.sidebar-primary .main {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar-primary .main {
+    border-bottom: 5px solid #DD6453;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+  }

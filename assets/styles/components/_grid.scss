@@ -1,3 +1,16 @@
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    3;
+
+$sidebar-sm-columns-th:    2;
+
+
+// @media only screen and (min-width : 992px){
+// 	$main-sm-columns:       12;
+// 	$sidebar-sm-columns:    2;
+// }
+
+
 // Grid system
 .main {
   @include make-sm-column($main-sm-columns);
@@ -11,4 +24,20 @@
 .sidebar {
   @include make-sm-column($sidebar-sm-columns);
   @include make-sm-column-pull($main-sm-columns - $sidebar-sm-columns);
+}
+
+
+
+@media only screen and (min-width : 992px){
+	.main {
+
+	  .sidebar-primary & {
+	    @include make-sm-column($main-sm-columns - $sidebar-sm-columns-th);
+	    @include make-sm-column-push($sidebar-sm-columns-th);
+	  }
+	}
+	.sidebar {
+	  @include make-sm-column($sidebar-sm-columns-th);
+	  @include make-sm-column-pull($main-sm-columns - $sidebar-sm-columns-th);
+	}
 }

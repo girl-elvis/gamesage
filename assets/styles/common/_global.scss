@@ -1,23 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans|Bentham|Cabin:700);
-
-$headerfontface: 'Josefin Sans', sans-serif ;
-$contentfontface: 'Bentham', serif;
-$varaboe: 20px;
-
-/** {
-   font-size: 18px;
-}*/
-
-
-body, p { font-family: $contentfontface; font-weight: normal;	}
+body, p { font-family: $contentfontface; font-weight: 400;	}
 
 h1, h2, h3, h4, h5, h6 , #archive-header, .page-title 
-{font-family: 'Josefin Sans', serif; font-weight: 400;	}
+{font-family: $headerfontface; font-weight: 400;	}
 
 #site-sub-navigation {font-family: $headerfontface;	}
 
 h1, .h1 {font-size: 21px; margin-top: 6px;}
-
+ul, ol {
+    padding-left: 20px;
+}
 
 body {
 	background-color: $background;
@@ -26,7 +17,7 @@ body {
 
 .fa {color: $brand-primary;}
 
-
+.tooltips{background-color: $hilight;}
 
 /* MIXINS  */
 
@@ -54,11 +45,12 @@ body {
 
 
 .homesearch{
-  @include doubleborder();
-  padding: 1em;
+  
+  padding: 1em 0 2em;
   h3 {
-    background-image: url('../images/asktheguru.png')  ;
+    background-image: url('../images/askmobile.png')  ;
     margin: 0;
+    height: 45px;
     
     background-size: contain;
     background-repeat: no-repeat;
@@ -91,10 +83,7 @@ body {
 
 /*Sidebar, widgets etc*/
 
-.sidebar-primary .main {
-    border-bottom: 5px solid #DD6453;
-    margin-bottom: 2em;
-  }
+
 
 .sidebar {    
   max-width: 200px;

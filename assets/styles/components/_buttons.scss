@@ -7,3 +7,17 @@
 .btn-default:hover {
 	//background-color: dark​en(​$brand-primary, 10%);
 }
+
+.filtersearch input{
+	background-color: $brand-primary;
+	padding: 6px 12px;
+	margin-left: 5px;
+	color: rgb(255, 255, 255);
+	border: 1px solid #E6E6E6;
+	border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: #fff;
+    text-transform: capitalize;
+    float: right;
+}

@@ -4,13 +4,20 @@
 .navbar-brand > img {width: 100%}
 
 .navbar-header {
-    float: none;
-      font-size: 27px;
+  float: none;
+  font-size: 27px;
   display: block;
+  .strip {
+    background-color: $brand-primary;
+  }
 }
 
+
 .navbar-brand {
-height: auto;
+  height: auto;
+  &.moblogo {
+    padding: 0;
+  }
 
 }
 .tagline {
@@ -18,7 +25,7 @@ height: auto;
   display:block; 
   clear:both; 
   text-align: center;
-font-size: 3rem;
+font-size: 1.4rem;
 color: $brand-primary;
 }
 
@@ -72,7 +79,7 @@ $colHighlight       : $hilight ; //highlight text colour
         color: $colHighlight;
         background-color: $bgHighlight; }}}
   .navbar-toggle {
-    border-color: $bgHighlight;
+    border-color: $background;
     float: none;
     margin-left: 15px;
     padding: 5px 5px;
@@ -81,7 +88,7 @@ $colHighlight       : $hilight ; //highlight text colour
     &:hover, &:focus {
       background-color: $bgHighlight; }
     .icon-bar {
-      background-color: $bgDefault }}
+      background-color: $background }}
   .navbar-collapse,
   .navbar-form {
     border-color: $colDefault; }
@@ -102,6 +109,7 @@ $colHighlight       : $hilight ; //highlight text colour
         background-color: $bgHighlight; }}}
 }
 
+.navbar-default .navbar-brand.moblogo {padding-top: 2px;}
 /*Nav Layout*/
 
 
