@@ -15,32 +15,32 @@
     </div>
 
  <?php
-	
+		$theID = get_the_ID();
 
-		$ages = get_the_term_list( get_the_ID(), 'age', 'Ages: ', ',', '');
+		$ages = get_the_term_list( $theID, 'age', 'Ages: ', ',', '');
 
 		$args = array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'names');
-		$players = wp_get_object_terms( get_the_ID(), 'num_players', $args);
+		$players = wp_get_object_terms( $theID, 'num_players', $args);
 		$players = 	'Number of Players: ' . $players[0] . '-' . array_pop($players);
-		$playtime = get_the_term_list( get_the_ID(), 'regular_play_times', 'Regular Play Time: ');
+		$playtime = get_the_term_list( $theID, 'regular_play_times', 'Play Time: ');
 		//$complexity = get_the_term_list( get_the_ID(), 'complexity','Complexity: <span>', '' ,'</span>' );
-		$complexity = get_the_terms( get_the_ID(), 'complexity' );
+		$complexity = get_the_terms( $theID, 'complexity' );
 		$comp_url = (get_term_link( ($complexity[0]->term_id), 'complexity' )); 
 
 
 
-	 	$learning = get_the_term_list( get_the_ID(), 'learning_time', 'Learning Time: ');
-	 	$firstplay = get_the_term_list( get_the_ID(), 'first-play', 'First Play Time: ');
+	 	$learning = get_the_term_list( $theID, 'learning_time', 'Learning Time: ');
+	 	$firstplay = get_the_term_list( $theID, 'first-play', 'First Play Time: ');
 
 
 	?>
 
 
-	<div class="game-meta meta-ages"><?php echo $ages ; ?>+</div>
+	<div class="game-meta meta-ages"><?php echo $ages ; ?></div>
 	<div class="game-meta meta-players"><?php echo $players ; ?></div>
 	<div class="game-meta meta-playtime"><?php echo $playtime ; ?></div>
 <div class="game-meta meta-complexity">Complexity: <a href='<?php echo $comp_url; ?>' ><span><?php echo($complexity[0]->name) ; ?></span></a></div>
-
+<div class="game-meta meta-rating">Rating: <?php echo do_shortcode('[yasr_overall_rating ]' ) ; ?></div>
 
 
  

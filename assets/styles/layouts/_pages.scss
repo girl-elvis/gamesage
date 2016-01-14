@@ -11,7 +11,10 @@
 	@extend .hidden-xs;
 
 }
-
+.ff{
+	position: relative;
+	.tooltips{ background: transparent;}
+}
 .home .main img, .home .main span img{
 	height: auto;
 	max-width: 100%;

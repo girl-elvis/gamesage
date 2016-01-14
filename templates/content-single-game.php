@@ -10,8 +10,10 @@
 	$args = array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'names');
 	$players = wp_get_object_terms( get_the_ID(), 'num_players', $args);
 	$players = 	'Number of Players: ' . $players[0] . '-' . array_pop($players);
-	$playtime = get_the_term_list( get_the_ID(), 'regular_play_times', 'Regular Play Time: ');
-	$complexity = get_the_term_list( get_the_ID(), 'complexity','Complexity: ' );
+	$playtime = get_the_term_list( get_the_ID(), 'regular_play_times', 'Play Time: ');
+	//$complexity = get_the_term_list( get_the_ID(), 'complexity','Complexity: ' );
+		$complexity = get_the_terms( get_the_ID(), 'complexity' );
+		$comp_url = (get_term_link( ($complexity[0]->term_id), 'complexity' )); 
 
  	$takethat = types_render_field("take-that");
  	$fidget = types_render_field("fidget-factor");
@@ -33,15 +35,22 @@
 
 
 	<div class="entry-content">
+
+<div class="mobpic visible-xs-block">
+  <?php  the_post_thumbnail("medium");?>
+</div>
+
+
 		<div class="row">
 			<div class="col-md-6 col-md-push-6">
 
 	<div class="meta">
 	<div class="game-meta"> <?php echo $designer ; ?></div>
-	<div class="game-meta"><?php echo $ages ; ?>+</div>
+	<div class="game-meta"><?php echo $ages ; ?></div>
 	<div class="game-meta"><?php echo $players ; ?></div>
-	<div class="game-meta"><?php echo $playtime ; ?></div>
-	<div class="game-meta"><?php echo $complexity ; ?></div>
+	<div class="game-meta"><?php echo $playtime ; ?> mins</div>
+<div class="game-meta meta-complexity">Complexity: <a href='<?php echo $comp_url; ?>' ><span><?php echo($complexity[0]->name) ; ?></span></a></div>
+
 </div>
 				<?php the_content(); ?>	
 
@@ -52,7 +61,7 @@
 		<?php the_field('sam_says'); ?>	
 		</div>
 
-	<?php } ?>
+	<?php } ?>  
 	<?php if(get_field('joe_says')) { ?>
 		<div class="joe_says"><h3>Joe Says...</h3>
 		<?php the_field('joe_says'); ?>	
@@ -85,26 +94,33 @@
 				<p> <?php echo $learning ; ?></p>
 				<p> <?php echo $firstplay ; ?></p>
 				<p> <?php echo $playtime ; ?></p>
-				<h5> If you like this game, try:</h5>
+
+				<div class="related">
+				<p> If you like this game, try:</p>
 
 				<?php 
 
 				$posts = get_field('related_games');
 
 				if( $posts ): ?>
-				    <ul>
+				    <table>
 				    <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
-				        <?php setup_postdata($post); ?>
-				        <li>
-				            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+				        <?php setup_postdata($post); 
+				        $complexity = get_the_terms( get_the_ID(), 'complexity','Complexity: ' );
+				        $complexityval = $complexity[0]->name;
+				        ?>
+				        <tr>
+				            <td><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></td>
+				       
+				            <td><span class='meta-complexity value<?php echo $complexityval; ?>'><span><?php echo $complexityval ; ?></span></span></td>
 				            <!-- <span>Custom field from $post: <?php the_field('author'); ?></span> -->
-				        </li>
+				        </tr>
 				    <?php endforeach; ?>
-				    </ul>
+				    </table>
 				    <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
 				<?php endif; ?>
 
-				
+				</div> <!-- end .related -->
 			</div>
 
 			

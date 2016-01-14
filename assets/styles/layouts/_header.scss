@@ -110,6 +110,22 @@ $colHighlight       : $hilight ; //highlight text colour
 }
 
 .navbar-default .navbar-brand.moblogo {padding-top: 2px;}
+
+
+
+// MObile menu
+
+.mobcatlist{
+  list-style: outside none none;
+  padding-left: 0px;
+  li{
+    border-bottom: 1px solid $brand-primary;
+  }
+}
+
+
+
+
 /*Nav Layout*/
 
 

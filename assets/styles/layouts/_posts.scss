@@ -1,5 +1,11 @@
 // Game Posts
 
+// mob only pic
+.mobpic img{
+	margin: 1em auto;
+	display: block;
+}
+
 .type-game {
 	header {margin-bottom: 0.6em;}
 	.entry-summary {
@@ -73,7 +79,10 @@ h1.entry-title{margin-top: 0}
 	    margin-bottom: 10px;
 
 	}
-	.meta-complexity a {
+	
+	
+}
+.meta-complexity a {
 		background: url('../images/cogs.png') no-repeat ;
 		background-position: 0 -1px;
 		display: inline-block;
@@ -91,5 +100,24 @@ h1.entry-title{margin-top: 0}
 
 	}
 
-	
-}
+.gameextra-meta p {text-transform: uppercase;}
+span.meta-complexity {
+		background: url('../images/cogs.png') no-repeat ;
+		background-position: 0 -1px;
+		display: inline-block;
+		width: 100px;
+		height: 21px;
+		vertical-align: top;
+		&.value2 { background-position: 0 -23px}
+		&.value3 { background-position: 0 -45px}
+		&.value4 { background-position: 0 -70px}
+		span{
+			@extend	.offscreen;
+		
+		}
+	}
+
+	.related {
+		margin-top: 2em;
+		td {padding: 5px;}
+	}
