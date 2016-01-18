@@ -5,20 +5,23 @@
 
  <?php 
     $designer = get_the_term_list( get_the_ID(), 'designer', 'Designed by: ', ', ');
-	$ages = get_the_term_list( get_the_ID(), 'age', 'Ages: ');
+	$ages = get_the_term_list( get_the_ID(), 'age', 'Ages: ', ',', '');
 
 	$args = array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'names');
-	$players = wp_get_object_terms( get_the_ID(), 'num_players', $args);
-	$players = 	'Number of Players: ' . $players[0] . '-' . array_pop($players);
+	// $players = wp_get_object_terms( get_the_ID(), 'num_players', $args);
+	// $players = 	'Number of Players: ' . $players[0] . '-' . array_pop($players);
+
+
+	$players = get_the_term_list( get_the_ID(), 'num_players', 'Number of Players: ', ',', '');
 	$playtime = get_the_term_list( get_the_ID(), 'regular_play_times', 'Play Time: ');
 	//$complexity = get_the_term_list( get_the_ID(), 'complexity','Complexity: ' );
 		$complexity = get_the_terms( get_the_ID(), 'complexity' );
 		$comp_url = (get_term_link( ($complexity[0]->term_id), 'complexity' )); 
 
- 	$takethat = types_render_field("take-that");
- 	$fidget = types_render_field("fidget-factor");
- 	$brainburn = types_render_field("brain-burn");
- 	$again = types_render_field("again-again");
+ 	$takethat = types_render_field("take-that",array("raw"=>"true"));
+ 	$fidget = types_render_field("fidget-factor",array("raw"=>"true"));
+ 	$brainburn = types_render_field("brain-burn",array("raw"=>"true"));
+ 	$again = types_render_field("again-again",array("raw"=>"true"));
 
  	$learning = get_the_term_list( get_the_ID(), 'learning_time', 'Learning Time: ');
  	$firstplay = get_the_term_list( get_the_ID(), 'first-play', 'First Play Time: ');
@@ -54,8 +57,7 @@
 </div>
 				<?php the_content(); ?>	
 
-<div  class="showmore"><a href="#"><i class="fa fa-arrow-circle-o-down"></i> Read More </a></div>
-	<div id="samjoe" class="hide">
+	<div id="samjoe" class="">
 	<?php if(get_field('sam_says')) { ?>
 		<div class="sam_says"><h3>Sam Says...</h3>
 		<?php the_field('sam_says'); ?>	
@@ -80,20 +82,20 @@
 				<?php get_template_part('templates/carousel'); ?>
 
 <div class="gameextra ">
-				 <h3 class="icon">Take That</h2>
+				 <h3 class="tt icon"><span>Take That</span></h2>
 			   	<p> <?php echo $takethat ; ?></p>
-			    <h3 class="icon">Fidget Factor</h2>
+			    <h3 class="ff icon"><span>Fidget Factor</span></h2>
 			    <p> <?php echo $fidget ; ?></p>
-			    <h3 class="icon">Brain Burn</h2>
+			    <h3 class="bb icon"><span>Brain Burn</span></h2>
 			    <p> <?php echo $brainburn ; ?></p>
-			    <h3 class="icon">Again again</h2>
+			    <h3 class="aa icon"><span>Again again</span></h2>
 			    <p> <?php echo $again ; ?></p>
 			</div>
 
 			<div class="gameextra-meta">
 				<p> <?php echo $learning ; ?></p>
-				<p> <?php echo $firstplay ; ?></p>
-				<p> <?php echo $playtime ; ?></p>
+				<p> <?php echo $firstplay ; ?> mins</p>
+				<p> <?php echo $playtime ; ?> mins</p>
 
 				<div class="related">
 				<p> If you like this game, try:</p>

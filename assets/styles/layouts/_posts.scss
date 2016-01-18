@@ -15,7 +15,7 @@
 }
 	
 
-	.imgextracol{margin-top: 1em}
+
 
 .game-meta {
 	display: block; 
@@ -30,11 +30,7 @@
 .single-game{
 	.meta{
 		
-		border-radius: 5px;
-		padding: 1em;
-		margin-bottom: 1em;
-		font-family: "Josefin Sans", sans-serif;
-		box-shadow: 0 0 1px 1px $brand-primary
+		@include doubleborder();
 	}
 	.game-meta {
 		white-space: nowrap;
@@ -45,12 +41,31 @@
 	.yasr-visitor-votes{
 		margin-bottom: 20px;
 	}
+	.entry-content { margin-top: 2em;}
 }
 
+.sam_says, .joe_says {
+	@include doubleborder();
+	padding-top: 25px;
+	background:  url('../images/samsays.png') no-repeat ;
+	h3 { @extend .text-hide;}
+}
 
+.joe_says{ background: url('../images/joesays.png') no-repeat ;}
 
+.gameextra {
+	@include doubleborder();
+	.icon {
+		padding: 6px 0;
+		margin-bottom: 2px;
+		background: url('../images/factors-sm.png') no-repeat 0 33%;
+		span{ @extend .text-hide;}
+		&.ff{background-position: 0 0; }
+		&.bb{background-position: 0 -123px; }
+		&.aa{background-position: 0 -82px; }
+	}
 
-.gameextra {@include doubleborder();}
+}
 
 
 h1.entry-title{margin-top: 0}

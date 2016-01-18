@@ -4,6 +4,12 @@
 
     border-bottom: none;
 }
+.category-1 .page-header {
+	@extend .text-hide;
+	height: 0px;
+	margin: 0px;
+	padding: 0px;
+}
 
 
 

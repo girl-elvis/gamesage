@@ -247,7 +247,18 @@ function sort_terms_naturally ( $terms, $taxonomies, $args ) {
 } 
 
 
+// Add JOESAM to end of game post content
 
+//add_filter('the_content', 'joesam_says');
+
+function joesam_says($content){
+global $post;
+$custom_category_text = '<p>Put your Custom category text here.</p>';
+ // change catetegory ID 3
+  $content =  $content . $custom_category_text;
+
+return $content;
+}
 
 
 ?>
