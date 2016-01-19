@@ -93,7 +93,7 @@
 			</div>
 
 			<div class="gameextra-meta">
-				<p> <?php echo $learning ; ?></p>
+				<p> <?php echo $learning ; ?> mins</p>
 				<p> <?php echo $firstplay ; ?> mins</p>
 				<p> <?php echo $playtime ; ?> mins</p>
 
