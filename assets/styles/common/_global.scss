@@ -120,6 +120,11 @@ padding-bottom: 0;
 
 
 /*    // CAROUSEL*/
+#new-royalslider-1{margin-bottom: 1em; @include doubleborder(); }
+.rsUni, .rsUni .rsOverflow, .rsUni .rsSlide, .rsUni .rsVideoFrameHolder, .rsUni .rsThumbs {
+    background: rgba(34, 34, 34, 0) none repeat scroll 0% 0%;
+}
+.royalSlider.rsFullscreen {background: rgba(5,5,5,0.9);}
 
 .carousel-inner > .item {}
 

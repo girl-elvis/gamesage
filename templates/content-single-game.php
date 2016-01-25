@@ -79,7 +79,9 @@
 
 
 			<div class="col-md-6 col-md-pull-6 imgextracol"> 
-				<?php get_template_part('templates/carousel'); ?>
+				<?php  
+				 register_new_royalslider_files("1");
+				 echo do_shortcode ('[gallery royalslider="1"]'); ?>
 
 <div class="gameextra ">
 				 <h3 class="tt icon"><span>Take That</span></h2>
